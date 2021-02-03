@@ -1,0 +1,130 @@
+
+#canvas{
+    position: relative;
+    left: 10%;
+}
+#query{
+    background-color: grey;
+    height: 100px;
+    padding-bottom: 2%;
+}
+/*CATEGORIAS*/
+.categoria{
+    position: relative;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+#beach{
+    left: 0%;
+    top: 50%;
+}
+#birthday{
+    left: 5%;
+    top: 0%;
+}
+#face{
+    left: 10%;
+    top: 100%;
+}
+#indoor{
+    left: 15%;
+    top: 0%;
+}
+#manmade_artificial{
+    left: 20%;
+    top: 100%;
+}
+#manmade_manmade{
+    left: 25%;
+    top: 0%;
+}
+#manmade_urban{
+    left: 30%;
+    top: 100%;
+}
+#marriage{
+    left: 35%;
+    top: 0%;
+}
+#nature{
+    left: 40%;
+    top: 100%;
+}
+#no_people{
+    left: 45%;
+    top: 0%;
+}
+#outdoor{
+    left: 50%;
+    top: 100%;
+}
+#party{
+    left: 55%;
+    top: 0%;
+}
+#people{
+    left: 60%;
+    top: 100%;
+}
+#snow{
+    left: 65%;
+    top: 0%;
+}
+/*COLORS*/
+/*Meter o transform a dar mm com o transition-delay*/
+.color{
+    border: 0.1vw solid black;
+    padding: 1vw;
+    cursor: pointer;
+    border-radius: 100%;
+ /*   transition-duration: 0.4s;*/
+}
+.color:hover{
+    padding: 1.3vw;
+  /*  transition-delay: 0.3s;*/
+  /*  transition-duration: 0.4s;*/
+}
+.color:active{
+    transform: translateY(1vw);
+}
+
+#red{
+    background-color: red;
+}
+
+#orange{
+    background-color: orange;
+}
+#yellow{
+    background-color: yellow;
+}
+#green{
+    background-color: green;
+}
+#Blue-green{
+    background-color: #0d98ba;
+}
+#blue{
+    background-color: blue;
+}
+#purple{
+    background-color: purple;
+}
+#pink{
+    background-color: pink;
+}
+#white{
+    background-color: white;
+}
+#grey{
+    background-color: grey;
+}
+#black{
+    background-color: black;
+}
+#brown{
+    background-color: brown;
+}
+
+

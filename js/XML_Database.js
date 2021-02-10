@@ -85,11 +85,10 @@ class LocalStorageXML {
 
     readLS_XML (keyname) {
         let localStorageRow = localStorage.getItem(keyname);
-        let xmlDoc = null;
 
         if (window.DOMParser) {
             let parser = new DOMParser();
-            return xmlDoc = parser.parseFromString(localStorageRow, "text/xml");
+            return parser.parseFromString(localStorageRow, "text/xml");
         }
         else throw new TypeError("LocalStorageXML-readLS_XML: Error with DOMParser");
     }

@@ -3,6 +3,7 @@
 class ISearchEngine {
     constructor(dbase) {
         this.allpictures = new Pool(3000);
+
         this.colors = ["red", "orange", "yellow", "green", "Blue-green", "blue", "purple", "pink", "white", "grey", "black", "brown"];
         this.redColor = [204, 251, 255, 0, 3, 0, 118, 255, 255, 153, 0, 136];
         this.greenColor = [0, 148, 255, 204, 192, 0, 44, 152, 255, 153, 0, 84];
@@ -11,7 +12,7 @@ class ISearchEngine {
         this.XML_file = dbase;
         this.XML_db = new XML_Database();
         this.LS_db = new LocalStorageXML();
-        this.num_Images = 1;
+        this.num_Images = 100;
         this.numshownpic = 35;
         this.imgWidth = 190;
         this.imgHeight = 140;
@@ -33,10 +34,13 @@ class ISearchEngine {
         let h12color = new ColorHistogram(this.redColor, this.greenColor, this.blueColor);
         let colmoments = new ColorMoments();
         let loadPics = this.XML_db.loadXMLfile(this.XML_file);
+
         let numCats = this.categories.length;
+
         //let img = new Picture(0, 0, 100, 100,"Images/daniel1.jpg", "test");
         for(let i = 0; i < numCats; i++) {
             let numPics = loadPics.getElementsByClassName(this.categories[i]);
+
             for (let j = 0; j < numPics.length; j++) {
                 let img = new Picture(0, 0, 100, 100,"Images/" + this.categories[i] + "/img_" + (j+1) + ".jpg", this.categories[i]);
 
@@ -58,7 +62,6 @@ class ISearchEngine {
     //to answer the queries related to Color and Image Example
     imageProcessed (img, eventname) {
         this.allpictures.insert(img);
-        console.log("image processed " + this.allpictures.stuff.length + eventname);
         if (this.allpictures.stuff.length === (this.num_Images * this.categories.length)) {
             this.createXMLColordatabaseLS();
             //this.createXMLIExampledatabaseLS();
@@ -67,36 +70,48 @@ class ISearchEngine {
 
     //Method to create the XML database in the localStorage for color queries
     createXMLColordatabaseLS() {
-        let idx = 0;
         let imageLS;
         let pathLS;
-        let i = 0;
-        for(let k = 0;k<this.categories.length;k++){
+        let clrSt ;
+        let pathSt;
+
+
+
+        for (let c = 0; c < this.colors.length; c++) {
             let docLS = document.implementation.createDocument('','images',null);
             let rootLS = docLS.firstChild;
-            for(;i<this.num_Images;i++) {
-                if(this.allpictures.stuff[i].category !== this.categories[k]){
-                    i--;
-                    break;
+
+
+            for (let i = 0; i < this.allpictures.stuff.length; i++) {
+                let numPixels = 0;
+                let idxColor = 0;
+                for (let j = 0; j<this.allpictures.stuff[i].hist.length; j++){
+
+                    if (numPixels < this.allpictures.stuff[i].hist[j]) {
+                        numPixels = this.allpictures.stuff[i].hist[j];
+                        idxColor = j;
+                    }
+
                 }
-                //string que contem a cor dominante na img
-                let clrSt = this.colors[idx];
-                // create the <image>, <path> and text node
-                imageLS = docLS.createElement("image");
-                pathLS = docLS.createElement("path");
+                console.log(this.colors[idxColor])
+                if(this.colors[idxColor] === this.colors[c]) {
+                    clrSt = this.colors[idxColor];
 
-                let att = docLS.createAttribute("class");       // Create a "class" attribute
-                att.value = clrSt;                           // Set the value of the class attribute
-                imageLS.setAttributeNode(att);
+                    // create the <image>, <path> and text node
+                    imageLS = docLS.createElement("image");
+                    pathLS = docLS.createElement("path");
 
-                pathLS.appendChild(docLS.createTextNode(this.allpictures.stuff[i].impath));
-                imageLS.appendChild(pathLS);
-                rootLS.appendChild(imageLS);
+                    let att = docLS.createAttribute("class");       // Create a "class" attribute
+                    att.value =  this.allpictures.stuff[i].category;   // Set the value of the class attribute
+                    imageLS.setAttributeNode(att);
 
-                this.LS_db.saveLS_XML(this.categories[k], new XMLSerializer().serializeToString(rootLS));
+                    pathLS.appendChild(docLS.createTextNode(this.allpictures.stuff[i].impath));
+                    imageLS.appendChild(pathLS);
+                    rootLS.appendChild(imageLS);
+                }
             }
-            console.log(rootLS);
 
+            this.LS_db.saveLS_XML(this.colors[c], new XMLSerializer().serializeToString(rootLS));
         }
 
 
@@ -171,10 +186,33 @@ class ISearchEngine {
 
         let canvas = document.querySelector("canvas");
         // let xmlDoc = this.XML_db.loadXMLfile(this.XML_file);
-        let storageDoc = this.LS_db.readLS_XML(this.category);
+        let storageDoc = this.LS_db.readLS_XML(color);
         let num_Img = 30;
-        console.log(storageDoc);
-        this.imagesToDisplay = this.XML_db.SearchXMLColor(this.category,this.rgbToHex(color),storageDoc,num_Img);
+        let Images_path = [];
+        let x = storageDoc.getElementsByClassName(category);
+        if (num_Img > x.length) {
+            num_Img = x.length;
+        }
+
+        for (let i = 0; i < num_Img; i++) {
+            for (let j = 0; j < x[i].childNodes.length; j++) {
+
+
+
+                        x[i].childNodes.forEach(c => {
+                            if(c.nodeName === "path"){
+                                Images_path.push(c.textContent);
+                            }
+
+                        });
+                        break;
+
+
+            }
+        }
+        
+        this.imagesToDisplay = Images_path;
+
         //this.gridView(canvas)
         this.circleView(canvas);
 

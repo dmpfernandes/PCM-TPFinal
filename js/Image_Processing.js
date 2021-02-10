@@ -47,7 +47,7 @@ class Picture {
             //console.log(pixels);
             console.log(this.imgobj.impath);
             this.hist = histcol.count_Pixels(pixels);
-            this.build_Color_Rect(cnv, this.hist, histcol.redColor, histcol.greenColor, histcol.blueColor);
+            // this.build_Color_Rect(cnv, this.hist, histcol.redColor, histcol.greenColor, histcol.blueColor);
             //this.color_moments = colorMom.moments(this.imgobj, cnv);
             document.dispatchEvent(eventP);
 
@@ -57,10 +57,10 @@ class Picture {
             this.imgobj.addEventListener('load', function () {
                 ctx.drawImage(self.imgobj, 0, 0, self.imgobj.width, self.imgobj.height);
                 let pixels =  ctx.getImageData(0, 0, self.imgobj.width, self.imgobj.height);
-                //let pixels = Generate_Image(cnv);
+                // let pixels = Generate_Image(cnv);
                 //console.log(pixels.data.length);
                 self.hist = histcol.count_Pixels(pixels);
-                self.build_Color_Rect(cnv, self.hist, histcol.redColor, histcol.greenColor, histcol.blueColor);
+                // self.build_Color_Rect(cnv, self.hist, histcol.redColor, histcol.greenColor, histcol.blueColor);
                 //self.color_moments = colorMom.moments(self.imgobj, cnv);
                 document.dispatchEvent(eventP);
             }, false);
@@ -132,7 +132,7 @@ class ColorHistogram {
                 }
             }
         }
-        console.log(histogram);
+
         return histogram;
     }
 }

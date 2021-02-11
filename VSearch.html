@@ -12,31 +12,33 @@
     <script src="js/XML_Database.js"></script>
     <script src="js/ISearchEngine.js"></script>
     <script src="js/ISearchEngine_Manager.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
 <body>
 <header id="header1"></header>
 
-<section id="query">
-    <button class="categoria" id = "beach" onclick="app.searchKeywords('beach')">Beach</button>
-    <button class="categoria" id = "birthday" onclick="app.searchKeywords('birthday')">Birthday</button>
-    <button class="categoria" id = "face" onclick="app.searchKeywords('face')">Face</button>
-    <button class="categoria" id = "indoor" onclick="app.searchKeywords('indoor')">Indoor</button>
-    <button class="categoria" id = "manmade_artificial" onclick="app.searchKeywords('manmade/artificial')">Artificial</button>
-    <button class="categoria" id = "manmade_manmade" onclick="app.searchKeywords('manmade/manmade')">Manmade</button>
-    <button class="categoria" id = "manmade_urban" onclick="app.searchKeywords('manmade/urban')">Urban</button>
-    <button class="categoria" id = "marriage" onclick="app.searchKeywords('marriage')">Marriage</button>
-    <button class="categoria" id = "nature" onclick="app.searchKeywords('nature')">Nature</button>
-    <button class="categoria" id = "no_people" onclick="app.searchKeywords('no_people')">No People</button>
-    <button class="categoria" id = "outdoor" onclick="app.searchKeywords('outdoor')">Outdoor</button>
-    <button class="categoria" id = "party" onclick="app.searchKeywords('party')">Party</button>
-    <button class="categoria" id = "people" onclick="app.searchKeywords('people')">People</button>
-    <button class="categoria" id = "snow" onclick="app.searchKeywords('snow')">Snow</button>
+<section class="row btn-group btn-group-justified" id="query">
+    <button class="categoria col" id = "beach" onclick="app.searchKeywords('beach')">Beach</button>
+    <button class="categoria col" id = "birthday" onclick="app.searchKeywords('birthday')">Birthday</button>
+    <button class="categoria col" id = "face" onclick="app.searchKeywords('face')">Face</button>
+    <button class="categoria col" id = "indoor" onclick="app.searchKeywords('indoor')">Indoor</button>
+    <button class="categoria col" id = "manmade_artificial" onclick="app.searchKeywords('manmade/artificial')">Artificial</button>
+    <button class="categoria col" id = "manmade_manmade" onclick="app.searchKeywords('manmade/manmade')">Manmade</button>
+    <button class="categoria col" id = "manmade_urban" onclick="app.searchKeywords('manmade/urban')">Urban</button>
+    <button class="categoria col" id = "marriage" onclick="app.searchKeywords('marriage')">Marriage</button>
+    <button class="categoria col" id = "nature" onclick="app.searchKeywords('nature')">Nature</button>
+    <button class="categoria col" id = "no_people" onclick="app.searchKeywords('no_people')">No People</button>
+    <button class="categoria col" id = "outdoor" onclick="app.searchKeywords('outdoor')">Outdoor</button>
+    <button class="categoria col" id = "party" onclick="app.searchKeywords('party')">Party</button>
+    <button class="categoria col" id = "people" onclick="app.searchKeywords('people')">People</button>
+    <button class="categoria col" id = "snow" onclick="app.searchKeywords('snow')">Snow</button>
 </section>
 
 <section id="tools">
     <div class="search-container">
         <input type="text" placeholder="Search.." name="search" id = "search">
-        <button onclick="app.searchKeywords(search.value)"></button>
+        <button onclick="app.searchKeywords(search.value)">Search</button>
     </div>
 
 

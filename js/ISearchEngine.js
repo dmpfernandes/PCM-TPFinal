@@ -210,7 +210,7 @@ class ISearchEngine {
 
             }
         }
-        
+
         this.imagesToDisplay = Images_path;
 
         //this.gridView(canvas)

@@ -5,72 +5,17 @@
 }
 #query{
     background-color: grey;
-    height: 100px;
-    padding-bottom: 2%;
+    align-items: center;
+    width: 100%;
 }
 /*CATEGORIAS*/
 .categoria{
     position: relative;
     background: none;
-    border: none;
+    border: solid black;
     cursor: pointer;
 }
-#beach{
-    left: 0%;
-    top: 50%;
-}
-#birthday{
-    left: 5%;
-    top: 0%;
-}
-#face{
-    left: 10%;
-    top: 100%;
-}
-#indoor{
-    left: 15%;
-    top: 0%;
-}
-#manmade_artificial{
-    left: 20%;
-    top: 100%;
-}
-#manmade_manmade{
-    left: 25%;
-    top: 0%;
-}
-#manmade_urban{
-    left: 30%;
-    top: 100%;
-}
-#marriage{
-    left: 35%;
-    top: 0%;
-}
-#nature{
-    left: 40%;
-    top: 100%;
-}
-#no_people{
-    left: 45%;
-    top: 0%;
-}
-#outdoor{
-    left: 50%;
-    top: 100%;
-}
-#party{
-    left: 55%;
-    top: 0%;
-}
-#people{
-    left: 60%;
-    top: 100%;
-}
-#snow{
-    left: 65%;
-    top: 0%;
-}
+
 /*COLORS*/
 /*Meter o transform a dar mm com o transition-delay*/
 .color{
